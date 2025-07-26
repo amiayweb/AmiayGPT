@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://placehold.co/600x120?text=AmiayGPT+Banner" alt="AmiayGPT Banner" width="500"/>
+  <img src="https://i.imgur.com/n7CidQ5.png" alt="AmiayGPT Banner" width="500"/>
 </p>
 
 <h1 align="center">AmiayGPT 🤖✨</h1>
@@ -79,10 +79,11 @@ amiaygpt/
 
 ## 📝 Codeblock & Markdown Syntax
 
-- **Codeblocks**: Use triple backticks and language name (e.g. ```python)
 - **Markdown**: Bot responses support headings, bold, italic, lists, tables, blockquotes, links, inline code, and more
 - **Syntax highlighting**: All languages supported via PrismJS
 - **Light/Dark mode**: Toggle in the UI
+- 
+- **Codeblocks**: Use triple backticks and language name:
 
 **Example:**
 ```python
