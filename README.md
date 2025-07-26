@@ -32,10 +32,10 @@
 - 🔐 **User authentication (JWT, MySQL)**
 - 💬 **Persistent conversation history**
 - 🎨 **Modern UI (glassmorphism, dark/light mode)**
-- 📝 **Markdown & codeblock syntax highlighting**
-- 🌗 **Light/Dark mode toggle**
+- 📝 **Markdown & codeblock syntax highlighting** (soon)
+- 🌗 **Light/Dark mode toggle** (soon)
 - 📋 **Copy button for code blocks**
-- 📱 **Responsive design**
+- 📱 **Responsive design** (soon)
 - 🛎️ **Notifications & real-time typing indicator**
 - 💡 **Suggestion cards for quick prompts**
 - ...and more!
