@@ -44,7 +44,7 @@ AmiayGPT is a modern chatbot web application inspired by ChatGPT, built with Nod
 
 ## Codeblock & Markdown Syntax
 
-- **Codeblocks**: Use triple backticks and language name (e.g. ```python)
+- **Codeblocks**: Use triple backticks and language name (e.g. ```python```)
 - **Markdown**: Bot responses support headings, bold, italic, lists, tables, blockquotes, links, inline code, and more
 - **Syntax highlighting**: All languages supported via PrismJS
 - **Light/Dark mode**: Toggle in the UI
