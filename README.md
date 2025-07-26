@@ -1,22 +1,48 @@
-# AmiayGPT
+<p align="center">
+  <img src="https://placehold.co/600x120?text=AmiayGPT+Banner" alt="AmiayGPT Banner" width="500"/>
+</p>
 
-AmiayGPT is a modern chatbot web application inspired by ChatGPT, built with Node.js (Express), vanilla JS, HTML, CSS, and Tailwind CSS. It features user authentication, persistent conversations, and a beautiful, responsive UI.
+<h1 align="center">AmiayGPT 🤖✨</h1>
 
-## Features
+<p align="center">
+  <b>Modern, open-source ChatGPT-like chatbot app with user authentication, persistent conversations, beautiful UI, markdown/codeblock support, and OpenAI integration.</b>
+</p>
 
-- OpenAI GPT-3.5-turbo integration
-- User registration and login (MySQL, JWT)
-- Per-user conversation history (saved in database)
-- Modern UI (glassmorphism, blob animations, dark/light mode)
-- Codeblock syntax highlighting (PrismJS, all languages supported)
-- Markdown support in bot responses
-- Light and dark mode toggle
-- Real-time typing indicator
-- Notification system
-- Suggestion cards for quick prompts
-- Copy button for code blocks
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-18.x-green?logo=node.js"/>
+  <img src="https://img.shields.io/github/license/votreuser/amiaygpt"/>
+  <img src="https://img.shields.io/badge/OpenAI-API-blueviolet"/>
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/>
+</p>
 
-## Setup
+---
+
+## 📚 Table of Contents
+- [Features](#-features)
+- [Setup](#-setup)
+- [Project Structure](#-project-structure)
+- [Codeblock & Markdown Syntax](#-codeblock--markdown-syntax)
+- [Coming Soon](#-coming-soon)
+
+---
+
+## ✨ Features
+
+- 🤖 **OpenAI GPT-3.5-turbo integration**
+- 🔐 **User authentication (JWT, MySQL)**
+- 💬 **Persistent conversation history**
+- 🎨 **Modern UI (glassmorphism, dark/light mode)**
+- 📝 **Markdown & codeblock syntax highlighting**
+- 🌗 **Light/Dark mode toggle**
+- 📋 **Copy button for code blocks**
+- 📱 **Responsive design**
+- 🛎️ **Notifications & real-time typing indicator**
+- 💡 **Suggestion cards for quick prompts**
+- ...and more!
+
+---
+
+## 🚀 Setup
 
 1. **Clone the repository**
 2. **Install dependencies**
@@ -33,30 +59,48 @@ AmiayGPT is a modern chatbot web application inspired by ChatGPT, built with Nod
    ```
 6. **Visit** [http://localhost:3000](http://localhost:3000)
 
-## Project Structure
+---
 
-- `server.js` - Main Express server
-- `routes/` - API routes (auth, conversations)
-- `config/` - Database config
-- `middleware/` - JWT authentication
-- `public/` - Frontend (HTML, CSS, JS)
-- `database.sql` - MySQL schema
+## 🛠️ Project Structure
 
-## Codeblock & Markdown Syntax
+```text
+amiaygpt/
+├── public/                 # Frontend (HTML, CSS, JS)
+├── config/                 # Database config
+├── middleware/             # JWT authentication
+├── routes/                 # API routes (auth, conversations)
+├── server.js               # Main Express server
+├── database.sql            # MySQL schema
+├── package.json            # Dependencies and scripts
+└── README.md               # Documentation
+```
 
-- **Codeblocks**: Use triple backticks and language name (e.g. ```python```)
+---
+
+## 📝 Codeblock & Markdown Syntax
+
+- **Codeblocks**: Use triple backticks and language name (e.g. ```python)
 - **Markdown**: Bot responses support headings, bold, italic, lists, tables, blockquotes, links, inline code, and more
 - **Syntax highlighting**: All languages supported via PrismJS
 - **Light/Dark mode**: Toggle in the UI
 
-## Coming Soon
-
-- More advanced markdown rendering
-- User profile customization
-- Conversation export
-- More themes for codeblocks
-- Mobile support
+**Example:**
+```python
+# This is a Python code block
+for i in range(5):
+    print(i)
+```
 
 ---
 
-**AmiayGPT** is under active development. Stay tuned for more features! 
+## 🧩 Coming Soon
+
+- 🎨 More advanced markdown rendering
+- 🧑‍💻 User profile customization
+- 📦 Conversation export
+- 🖌️ More codeblock themes
+- 📱 Mobile app
+
+---
+
+<p align="center"><b>AmiayGPT is under active development. Stay tuned! 🚀</b></p> 
