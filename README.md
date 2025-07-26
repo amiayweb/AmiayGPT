@@ -10,7 +10,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Node.js-18.x-green?logo=node.js"/>
-  <img src="https://img.shields.io/github/license/votreuser/amiaygpt"/>
+  <img src="https://img.shields.io/github/license/amiayweb/amiaygpt"/>
   <img src="https://img.shields.io/badge/OpenAI-API-blueviolet"/>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/>
 </p>
