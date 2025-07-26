@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmiayGPT - Assistant IA Intelligent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/styles.css" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css">
+    <script>
+      window.Prism = window.Prism || {};
+      Prism.manual = true;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-white/10 backdrop-blur-xl dark:bg-gray-900/80 shadow-2xl border-r border-white/20 dark:border-gray-700/50 transform transition-transform duration-300 z-50">
+        <div class="flex flex-col h-full">
+            <!-- Header -->
+            <div class="p-6 border-b border-white/20 dark:border-gray-700/50">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-robot text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-white">AmiayGPT</h1>
+                        <p class="text-xs text-gray-300">Assistant IA</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Profile -->
+            <div class="p-4 border-b border-white/20 dark:border-gray-700/50">
+                <div class="flex items-center space-x-3 p-3 bg-white/10 dark:bg-gray-800/50 rounded-xl">
+                    <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-medium text-white truncate" id="userName">Utilisateur</p>
+                        <p class="text-xs text-gray-300 truncate" id="userEmail">user@example.com</p>
+                    </div>
+                    <button id="logoutBtn" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- New Chat Button -->
+            <div class="p-4">
+                <button id="newChatBtn" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 px-6 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl hover:shadow-2xl transform hover:scale-105 font-medium">
+                    <i class="fas fa-plus text-lg"></i>
+                    <span>Nouvelle conversation</span>
+                </button>
+            </div>
+
+            <!-- Conversations List -->
+            <div class="flex-1 overflow-y-auto px-4">
+                <div id="conversationsList" class="space-y-2">
+                    <!-- Les conversations seront ajoutées ici dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between">
+                    <button id="themeToggle" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">
+                        AmiayGPT v1.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 h-screen flex flex-col">
+        <!-- Top Bar -->
+        <div class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button id="sidebarToggle" class="lg:hidden text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h2 id="currentConversationTitle" class="text-lg font-semibold text-gray-800 dark:text-white">
+                    Nouvelle conversation
+                </h2>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button id="clearChatBtn" class="text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4">
+            <!-- Welcome Message -->
+            <div id="welcomeMessage" class="text-center py-12">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <i class="fas fa-robot text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+                    Bienvenue sur AmiayGPT
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+                    Je suis votre assistant IA intelligent. Posez-moi des questions, demandez de l'aide ou engagez une conversation !
+                </p>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all cursor-pointer suggestion-card">
+                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            Idées créatives
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Aide-moi à générer des idées pour un projet créatif
+                        </p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all cursor-pointer suggestion-card">
+                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2">
+                            <i class="fas fa-code text-green-500 mr-2"></i>
+                            Code & Développement
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Explique-moi un concept de programmation
+                        </p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all cursor-pointer suggestion-card">
+                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2">
+                            <i class="fas fa-book text-blue-500 mr-2"></i>
+                            Apprentissage
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Enseigne-moi quelque chose de nouveau
+                        </p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all cursor-pointer suggestion-card">
+                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2">
+                            <i class="fas fa-question-circle text-purple-500 mr-2"></i>
+                            Questions générales
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Réponds à mes questions sur n'importe quel sujet
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages will be added here dynamically -->
+            <div id="messagesContainer" class="space-y-4 hidden">
+                <!-- Messages will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Tapez votre message ici..." 
+                        class="w-full p-4 pr-12 border border-gray-300 dark:border-gray-600 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
+                        rows="1"
+                    ></textarea>
+                    <button 
+                        id="sendBtn" 
+                        class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-500 to-purple-600 text-white p-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled
+                    >
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center">
+                    AmiayGPT peut faire des erreurs. Considérez les informations importantes.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 flex items-center space-x-4">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+            <span class="text-gray-800 dark:text-white">AmiayGPT réfléchit...</span>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md mx-4">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="w-10 h-10 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center">
+                    <i class="fas fa-exclamation-triangle text-red-600 dark:text-red-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Erreur</h3>
+            </div>
+            <p id="errorMessage" class="text-gray-600 dark:text-gray-400 mb-4"></p>
+            <div class="flex justify-end">
+                <button id="closeErrorModal" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+ 
+    <script src="assets/script.js"></script>
+</body>
+</html> 
